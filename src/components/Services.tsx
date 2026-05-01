@@ -1,11 +1,14 @@
 import { motion } from 'motion/react';
 import { RESUME_DATA } from '../data';
-import { Settings, Layout, Shield } from 'lucide-react';
+// FIX 2: 'Layout' was removed from lucide-react around v0.290.
+// At v0.546.0 it does not exist — importing it gives undefined,
+// which silently breaks the icon render. Replaced with LayoutTemplate.
+import { Settings, LayoutTemplate, Shield } from 'lucide-react';
 
 const icons = {
   Settings: Settings,
-  Layout: Layout,
-  Shield: Shield
+  Layout: LayoutTemplate,  // data.ts still says "Layout" — mapped here
+  Shield: Shield,
 };
 
 export default function Services() {
@@ -20,7 +23,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {RESUME_DATA.services.map((service, index) => {
             const Icon = (icons as any)[service.icon];
-            
+
             return (
               <motion.div
                 key={service.title}
