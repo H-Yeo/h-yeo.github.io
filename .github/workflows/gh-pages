@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # triggers on every push to main
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions so the workflow can push to gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the source code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up Node (matches the version you're developing with locally)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install dependencies (uses package-lock.json for reproducible installs)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build the Vite/React app — output goes to ./dist
+      - name: Build
+        run: npm run build
+        env:
+          # Add any build-time environment variables here.
+          # For GH Pages (static hosting), these must be baked in at build time.
+          # Example: APP_URL: ${{ secrets.APP_URL }}
+          NODE_ENV: production
+
+      # 5. Deploy the ./dist folder to the gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # This creates/updates a gh-pages branch with only the built files
+          publish_branch: gh-pages
