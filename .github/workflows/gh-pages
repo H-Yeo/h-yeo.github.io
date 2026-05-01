@@ -8,6 +8,11 @@ on:
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
+# Allow only one concurrent deployment, skipping runs time-queued between the latest and current.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 # Sets permissions so the workflow can push to gh-pages branch
 permissions:
   contents: write
