@@ -46,7 +46,11 @@ jobs:
           # Example: APP_URL: ${{ secrets.APP_URL }}
           NODE_ENV: production
 
-      # 5. Deploy the ./dist folder to the gh-pages branch
+      # 5. Create .nojekyll to bypass Jekyll processing on GitHub Pages
+      - name: Add .nojekyll
+        run: touch ./dist/.nojekyll
+
+      # 6. Deploy the ./dist folder to the gh-pages branch
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
