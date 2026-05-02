@@ -74,7 +74,7 @@ export default function App() {
                 LinkedIn Profile
               </a>
             </div>
-            <p className="mt-12 text-[10px] font-mono text-slate-400 uppercase tracking-widest">BC-Based · Numbered Corporation</p>
+            <p className="mt-12 text-[10px] font-mono text-slate-400 uppercase tracking-widest">BC-Based · {RESUME_DATA.corporation}</p>
          </div>
       </section>
 

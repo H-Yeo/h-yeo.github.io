@@ -5,6 +5,20 @@ export const RESUME_DATA = {
   mission: "15+ years delivering mission-critical software for government, fintech, and enterprise clients. Specialising in .NET microservices, full-stack development, and complex systems integration.",
   email: "yeoheingo@outlook.com",
   location: "North Vancouver, BC, Canada",
+
+  // ── Availability signal ──────────────────────────────────────────────────
+  // Controls the hero stat card. Update `availabilityLabel` and `period`
+  // when a new contract begins. Flip `isCurrent` back to true and point
+  // lastEngagement at the new org when needed.
+  lastEngagement: {
+    label: "Most recent contract",
+    org: "Government of Canada",
+    dept: "Dept. of National Defence",
+    period: "10/2025 – 2026",
+    availabilityLabel: "Now accepting new contracts",
+  },
+  // ────────────────────────────────────────────────────────────────────────
+
   skillCategories: [
     {
       title: "Languages",
@@ -35,14 +49,16 @@ export const RESUME_DATA = {
       skills: ["Sales Technology", "Energy Sales Operations", "Market Fundamentals", "Federal Contracts", "Secure Payments"]
     }
   ],
+
   experience: [
     {
       role: "Software Contractor",
       company: "Department of National Defence",
-      period: "10/2025 – Present",
+      // Update this period to the actual end date when known
+      period: "10/2025 – 03/2026",
       location: "Canada",
-      description: "Delivering software integration and development services under a federal contract with the Government of Canada's Department of National Defence.",
-      isCurrent: true,
+      description: "Delivered software integration and development services under a federal contract with the Government of Canada's Department of National Defence.",
+      isCurrent: false,
       isGov: true,
       bullets: []
     },
@@ -112,11 +128,13 @@ export const RESUME_DATA = {
       ]
     }
   ],
+
   education: {
     degree: "Mathematics & Computing Science",
     institution: "University of Alberta",
     details: "Focus on numerical analysis and computational logic."
   },
+
   services: [
     {
       title: "Systems Integration",
