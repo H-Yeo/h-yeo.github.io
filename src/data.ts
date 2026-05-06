@@ -5,6 +5,22 @@ export const RESUME_DATA = {
   mission: "15+ years delivering mission-critical software for government, fintech, and enterprise clients. Specialising in .NET microservices, full-stack development, and complex systems integration.",
   email: "yeoheingo@outlook.com",
   location: "North Vancouver, BC, Canada",
+
+  // ── Availability signal ──────────────────────────────────────────────────
+  lastEngagement: {
+    label: "Most recent contract",
+    org: "Government of Canada",
+    dept: "Dept. of National Defence",
+    period: "10/2025 – 03/2026",
+    availabilityLabel: "Now accepting new contracts",
+  },
+  currentEngagement: {
+    org: "Government of Canada",
+    dept: "Dept. of National Defence",
+    period: "10/2025 – Present",
+  },  
+  // ────────────────────────────────────────────────────────────────────────
+
   skillCategories: [
     {
       title: "Languages",
@@ -35,16 +51,22 @@ export const RESUME_DATA = {
       skills: ["Sales Technology", "Energy Sales Operations", "Market Fundamentals", "Federal Contracts", "Secure Payments"]
     }
   ],
+
   experience: [
     {
-      role: "Software Contractor",
+      role: "Full-Stack Software Developer (Contract)",
       company: "Department of National Defence",
-      period: "10/2025 – Present",
+      // Update this period to the actual end date when known
+      period: "10/2025 – 03/2026",
       location: "Canada",
-      description: "Delivering software integration and development services under a federal contract with the Government of Canada's Department of National Defence.",
-      isCurrent: true,
+      description: "Delivered software integration and development services under a federal contract with the Government of Canada's Department of National Defence.",
+      isCurrent: false,
       isGov: true,
-      bullets: []
+      bullets: [
+        "Built and structured core UI workflows using Vue and Vuetify, translating early-stage requirements into functional layouts and reusable components across multiple forms and user interactions.",
+        "Integrated frontend components with C# services and Oracle 12 backend to enable dynamic data-driven behavior, including dropdown population, form inputs, and file upload (drag-and-drop) functionality.",
+        "Defined initial frontend architecture and implementation strategy for a greenfield system, balancing rapid delivery with maintainability within a 4-month contract timeline."
+      ]
     },
     {
       role: "Intermediate Software Engineer II",
@@ -91,32 +113,34 @@ export const RESUME_DATA = {
       ]
     },
     {
-      role: "Analyst, Sales Technology",
-      company: "ATCO Energy Ltd.",
-      period: "2015 – 2017",
-      description: "Lead Salesforce.com business administrator, collaborating on corporate initiatives and supporting marketing and sales teams on CRM technology.",
+      role: "BA, Market Fundamentals / Analyst, Sales Technology",
+      company: "ATCO Power Canada Ltd · ATCO Energy Ltd",
+      period: "2013 – 2017",
+      description: "Performed short-term and long-term power and natural gas forecasting using AURORAxmp. Lead Salesforce.com business administration, collaborating on corporate initiatives and supporting marketing and sales teams on CRM technology.",
       bullets: [
+        "Technology optimisations eliminated the need for 1 FTE and enabled pricing one contract per day versus several",
         "Documented existing business processes and captured MVP requirements that influenced Salesforce.com strategy for both subsidiary and parent company",
         "Created a .NET proof-of-concept pricing application for commercial power and natural gas contracts within 2 months"
       ]
     },
     {
-      role: "Business Systems Professional / BA, Market Fundamentals",
-      company: "Capital Power Corporation · ATCO Power Canada Ltd.",
-      period: "2009 – 2015",
-      description: "Developed and maintained energy management operations software for real-time mission-critical compliance monitoring, electricity trading, and financial reporting. Performed short-term power forecasting using AURORAxmp.",
+      role: "Business Systems Professional",
+      company: "Capital Power Corporation",
+      period: "2009 – 2013",
+      description: "Developed and maintained energy management operations software for real-time mission-critical compliance monitoring, electricity trading, and financial reporting.",
       bullets: [
         "Developed contract software calculating millions of dollars in capacity and energy payments for coal and natural gas power plants",
         "Technical lead for Energy Trading Risk Management (ETRM) system integration",
-        "Technology optimisations eliminated the need for 1 FTE and enabled pricing one contract per day versus several"
       ]
     }
   ],
+
   education: {
     degree: "Mathematics & Computing Science",
     institution: "University of Alberta",
     details: "Focus on numerical analysis and computational logic."
   },
+
   services: [
     {
       title: "Systems Integration",
