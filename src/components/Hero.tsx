@@ -3,7 +3,9 @@ import { RESUME_DATA } from '../data';
 import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
-  return (
+  const currentWork = RESUME_DATA.experience.find(w => w.isCurrent === true);
+
+  return (    
     <section className="relative min-h-screen flex flex-col justify-center px-8 lg:px-24 py-32 overflow-hidden bg-white dark:bg-[#080c14] transition-colors duration-300">
       {/* Background grid */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-20 dark:opacity-40">
@@ -98,45 +100,68 @@ export default function Hero() {
               <p className="text-[10px] text-slate-500">industries served</p>
             </div>
 
-            {/* ── OPTION B: Prior engagement card ── */}
-            <div className="col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none relative overflow-hidden group hover:-translate-y-1 transition-transform">
-              {/* Teal top rule — signals completion / positive closure */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal-500 to-transparent" />
+            {/* ── OPTION A: Current Engagement ── */}
+            <div className="col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none relative overflow-hidden group hover:-translate-y-1 transition-transform">            
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-500 to-transparent" />
+              {currentWork && (
+                  <>                   
+                    <p className="font-mono text-[10px] uppercase font-bold text-slate-400 mb-2">
+                      Current engagement
+                    </p>
 
-              <p className="font-mono text-[10px] uppercase font-bold text-slate-400 mb-3">
-                {RESUME_DATA.lastEngagement.label}
-              </p>
+                    <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-2">
+                      {RESUME_DATA.currentEngagement.org}<br />
+                    </p>
 
-              {/* Org name + dept */}
-              <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1">
-                {RESUME_DATA.lastEngagement.org}
-              </p>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-                {RESUME_DATA.lastEngagement.dept}
-              </p>
+                    <span className="text-sm font-normal text-slate-500">
+                      {RESUME_DATA.currentEngagement.dept}<br />
+                    </span>
 
-              {/* Two-badge row: Completed + Now accepting */}
-              <div className="flex flex-wrap items-center gap-2">
-                {/* Completed — neutral gray */}
-                <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">
-                  {/* Checkmark icon via CSS */}
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="flex-shrink-0">
-                    <circle cx="5" cy="5" r="4.5" className="stroke-slate-400 dark:stroke-slate-500" strokeWidth="1" fill="none"/>
-                    <path d="M3 5l1.5 1.5L7 3.5" className="stroke-slate-400 dark:stroke-slate-500" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                    Completed
-                  </span>
-                </div>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 rounded-full w-fit">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-widest">Active Engagement</span>
+                    </div>
+                  </>
+              )}
+              {/* ── OPTION B: Previous Engagement ── */}
+              {!currentWork && (
+                <>
+                  <p className="font-mono text-[10px] uppercase font-bold text-slate-400 mb-3">
+                    {RESUME_DATA.lastEngagement.label}
+                  </p>
 
-                {/* Now accepting — teal pulse */}
-                <div className="flex items-center gap-1.5 px-3 py-1 bg-teal-50 dark:bg-teal-500/10 border border-teal-200 dark:border-teal-500/25 rounded-full">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse flex-shrink-0" />
-                  <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-teal-700 dark:text-teal-400">
-                    {RESUME_DATA.lastEngagement.availabilityLabel}
-                  </span>
-                </div>
-              </div>
+                  {/* Org name + dept */}
+                  <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1">
+                    {RESUME_DATA.lastEngagement.org}
+                  </p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                    {RESUME_DATA.lastEngagement.dept}
+                  </p>
+
+                  {/* Two-badge row: Completed + Now accepting */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    {/* Completed — neutral gray */}
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">
+                      {/* Checkmark icon via CSS */}
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="flex-shrink-0">
+                        <circle cx="5" cy="5" r="4.5" className="stroke-slate-400 dark:stroke-slate-500" strokeWidth="1" fill="none"/>
+                        <path d="M3 5l1.5 1.5L7 3.5" className="stroke-slate-400 dark:stroke-slate-500" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                        Completed
+                      </span>
+                    </div>
+
+                    {/* Now accepting — teal pulse */}
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-teal-50 dark:bg-teal-500/10 border border-teal-200 dark:border-teal-500/25 rounded-full">
+                      <div className="w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse flex-shrink-0" />
+                      <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-teal-700 dark:text-teal-400">
+                        {RESUME_DATA.lastEngagement.availabilityLabel}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Academic */}
