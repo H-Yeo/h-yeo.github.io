@@ -9,6 +9,8 @@ import { RESUME_DATA } from './data';
 export default function App() {
   const [isDark, setIsDark] = useState(true);
 
+  const currentWork = RESUME_DATA.experience.find(w => w.isCurrent === true);
+
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -63,9 +65,15 @@ export default function App() {
       <section id="contact" className="py-24 px-8 lg:px-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
          <div className="max-w-3xl mx-auto text-center p-12 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-6 font-display">Ready for the next engagement?</h2>
-            <p className="text-slate-500 mb-10 leading-relaxed">
-              Currently engaged with DND Canada. Discussing future contracts across federal, fintech, and enterprise domains.
-            </p>
+            {currentWork ? (
+              <p className="text-slate-500 mb-10 leading-relaxed">
+                Currently engaged with {currentWork.company}. Discussing future contracts across federal, fintech, and enterprise domains.
+              </p>
+            ) : (
+              <p className="text-slate-500 mb-10 leading-relaxed">
+                {RESUME_DATA.lastEngagement.availabilityLabel}. Open to discussing contracts across federal, fintech, and enterprise domains.
+              </p>
+            )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={`mailto:${RESUME_DATA.email}`} className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold transition-all hover:scale-105">
                 Send an Email

@@ -3,7 +3,7 @@ export const RESUME_DATA = {
   title: "Enterprise Software & Systems Integration",
   corporation: "1559029 B.C. LTD.",
   mission: "15+ years delivering mission-critical software for government, fintech, and enterprise clients. Specialising in .NET microservices, full-stack development, and complex systems integration.",
-  email: "yeoheingo@outlook.com",
+  email: "yeoheing@outlook.com",
   location: "North Vancouver, BC, Canada",
 
   // ── Availability signal ──────────────────────────────────────────────────
