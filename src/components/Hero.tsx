@@ -102,15 +102,15 @@ export default function Hero() {
 
             {/* ── OPTION A: Current Engagement ── */}
             <div className="col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none relative overflow-hidden group hover:-translate-y-1 transition-transform">            
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-500 to-transparent" />
+            <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${currentWork ? 'from-amber-500' : 'from-teal-500'} to-transparent`} />
               {currentWork && (
                   <>                   
                     <p className="font-mono text-[10px] uppercase font-bold text-slate-400 mb-2">
                       Current engagement
                     </p>
 
-                    <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-2">
-                      {RESUME_DATA.currentEngagement.org}<br />
+                    <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1">
+                      {currentWork.company}
                     </p>
 
                     <span className="text-sm font-normal text-slate-500">
